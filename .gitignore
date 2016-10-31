@@ -1,0 +1,7 @@
+.DS_Store
+node_modules
+dist
+*.log
+deploy_key*
+!deploy_key.enc
+.eslintrc

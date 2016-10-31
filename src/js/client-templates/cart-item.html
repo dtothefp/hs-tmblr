@@ -1,0 +1,12 @@
+<div class="cart__items-wrapper">
+  <img src="{% src %}" class="cart__items-img" alt="{{name}}" />
+  <div class="cart__items-meta">
+    <h6>{{name}}</h6>
+    <div class="cart__items-interact">
+      <div class="cart__items-button increment" data-js-quantity="increment"></div>
+      <span data-js-update="quantity">{{quantity}}</span>
+      <div class="cart__items-button {% if quantity == 1%}remove{% else %}decrement{% endif %}" data-js-quantity="decrement"></div>
+    </div>
+  </div>
+</div>
+<p>&#36;<span data-js-update="price">{{price}}</span></p>

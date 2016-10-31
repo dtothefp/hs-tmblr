@@ -1,0 +1,32 @@
+sudo: false
+language: node_js
+env:
+  global:
+  - CXX=g++-4.8
+  - COMMIT_AUTHOR_EMAIL: "dtothefp@gmail.com"
+  - ENCRYPTION_LABEL: "01fad2955ba4"
+  - secure: IfEzOrHdg+J4bEG9VHH299eStjnQRXtHH1PIOR1GttbZMdbat56+FI4LSeP9Z5zGodRaEuHSFbW/FIh5ksiGlFGvnhCvPwmptS5qwVjp96O1WU9TWuLokHC5jrU6jb/EovKM9qbjiV+wY3L2dPoQrtzO3I1OUyftO5WwQS33k3ArYWxoTZh9tz+exTk+WwCTMXGs5nAu9zUTTiLdSsyAT23uHymCuBUlD0/iP21kQer24HxxOswC/QhAIVE3apXfR/TpDNYJ8DdSoKhlfwY4v8FP6xwpHgblxb57co8IYFNJv+PYlC2qOWvnKjPiqsGWj5A6uq8El+7qzMMUy7b56wEdfXYs4BYpzUOZklbeS+XnzUiqHoYyzTF5bfYnUKnRkuZDrQe+86wLcW9o05y5YEcRb3m/v5R3IPJFBHYg4WuEIIOWvBn5+13dl9ekvMewPuNDpPi17IjvLNQMDlOJZmpKFs6jyiOY1GWakHN1TnnEbdckx7KJAt23R2tlp5BNKz+1OzS7SSIzBN7OudkTSzEjk9YZDrNOdAoCLW69lexmP0BCpQdpoceMCJTFVJFW1DbC5e11SNa5TR0g/kSo2RlTUT+pTOcXZfyyJaNaHBZJKnhfZ6bNw3jFLflan3VxxUoVUaRNYVdDBZC8dAr6jLhlSs3V9ViK1EYWl8lQQpc=
+  - secure: E+PQ/1MZ5buWBqKklIbiFmAxpepBTLuXdZtT2wYs9CEGg98Q6iccSp79WSp4LWPOkxRCHgQA+4gD0t8AKgNqb7+0D/JPYPG7IYn2XuB7hlT4qhJgXCHMml29Y3sTCPDwCXMxPKvUBU09pg/y5JmV0exKByErJrc4tb7HdaFL7JYopSJnsj8YgZbxuDSfnYvZTKQft1SzY61032r1y4FcbYITiMWFS50SCroi142MDSkv487An6eu5BTr3xT91KwU4FOYm5OB+auCpSakjOkxAG+/EAcv3CKisIKN9aDvHhaw5RDJgBKLI5zTSCF7jNU2mYjV3cb/YwwyR6uJXoaxOlFJYs37XMPvzUFrD3JFSZUq+4qVsglBA8il6ieafe5WVMbqTLmZ+PXKZsISwQtqNX2vp1rjeHAzBGBI9kr+hoYgJfAF6PlYAvDLHxh1lhGhteYPWUNz4APLhBsOrhtJ4wFvFr1vDoKwz7lY2niWKdzqQz2BD4jnxfs9Zbz6WdOXW87Z0XTVKtM/mkT1yrQAQXrwSaWtojVhaT3mhusoDC4Vy0gobqUV3QHKq0kBH9LwAPdmChYq3AHJdpDoEgn6WPBf89JN3epR81SY6WPt9KwROOxRxJA5I877E0judHcVUjN4jUQ7DianhZyqGydCA/R+SDTmxubq7wnjWH/L2eo=
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - g++-4.8
+cache:
+  directories:
+  - node_modules
+notifications:
+  email:
+    on_success: never
+    on_failure: always
+before_install:
+- npm i -g npm@latest
+- npm i -g yarn
+- npm config set progress=false
+install:
+- yarn
+script:
+- npm run deploy
+after_script:
+- npm test

@@ -1,0 +1,56 @@
+{
+  "name": "hs-tmblr",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "gulp build",
+    "serve": "gulp serve",
+    "watch": "gulp watch",
+    "deploy": "deploy; test $? -eq 0 -o $? -eq 1 -o $? -eq 2",
+    "fix": "eslint --fix ./test/integration/**",
+    "test": "gulp karma",
+    "test:watch": "gulp test:integration"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dtothefp/hs-tmblr.git"
+  },
+  "author": "Casper Dev Team",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/dtothefp/hs-tmblr/issues"
+  },
+  "homepage": "https://github.com/dtothefp/hs-tmblr/#readme",
+  "devDependencies": {
+    "babel-polyfill": "6.16.0",
+    "babel-register": "6.18.0",
+    "boiler-addon-assemble-middleware": "^5.0.0",
+    "boiler-addon-assemble-nunjucks": "^5.0.0",
+    "boiler-addon-webpack-babel": "^5.0.0",
+    "boiler-addon-webpack-karma": "^5.0.0",
+    "boiler-addon-webpack-loaders-base": "^5.0.0",
+    "boiler-addon-webpack-styles": "^5.0.0",
+    "boiler-config-babelrc": "5.2.2",
+    "boiler-core": "^5.0.0",
+    "boiler-preset-plus": "^5.0.0",
+    "chai": "3.5.0",
+    "chai-dom": "1.4.2",
+    "deploy": "file:./deploy",
+    "fetch-mock": "5.5.0",
+    "gulp": "github:gulpjs/gulp#4.0",
+    "json-server": "0.8.22",
+    "trigger-event": "1.0.3",
+    "webpack": "2.1.0-beta.25"
+  },
+  "dependencies": {
+    "dom4": "1.8.3",
+    "key-mirror": "1.0.1",
+    "lodash": "4.16.4",
+    "normalize-scss": "6.0.0",
+    "nunjucks-loader": "2.4.4",
+    "redux": "3.6.0",
+    "redux-logger": "2.7.0",
+    "redux-thunk": "2.1.0"
+  }
+}
