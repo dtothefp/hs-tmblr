@@ -1,2 +1,2 @@
-export {default as CART} from './cart/action-types';
-export {default as PRODUCTS} from './products/action-types';
+export {default as POSTS} from './posts/action-types';
+export {default as FAVORITES} from './favorites/action-types';

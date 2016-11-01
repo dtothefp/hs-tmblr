@@ -13,7 +13,10 @@ export default {
     open: true
   },
   eslint: {
-    generate: true
+    generate: true,
+    rules: {
+      'react/forbid-prop-types': 0
+    }
   },
   webpack: {
     shouldRev: true,
@@ -50,30 +53,13 @@ export default {
 
         return [...list, inst];
       }, []);
-    },
-    loaders(config, l) {
-      const {loaders} = l;
-      const nunjucksLoader = {
-        test: /\.html$/,
-        loader: 'nunjucks',
-        query: {
-          config: path.resolve(__dirname, '..', '..', 'src/js/config/nunjucks-config.js')
-        }
-      };
-      const [babelLoader] = loaders;
-      const ogExclude = babelLoader.exclude;
-      const exclude = fp => {
-        if (fp.indexOf('nunjucks-config') > 0) {
-          return false;
-        }
-
-        return ogExclude(fp);
-      };
-
-      babelLoader.exclude = exclude;
-      loaders.push(nunjucksLoader);
-
-      return l;
+    }
+  },
+  babel: {
+    exclude(config, fp) {
+      if (/fetch-jsonp/.test(fp)) {
+        return true;
+      }
     }
   },
   cb(config) {

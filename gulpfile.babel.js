@@ -14,7 +14,6 @@ gulp.task('browser-sync', tasks.browserSync);
 gulp.task('clean', tasks.clean);
 gulp.task('copy', tasks.copy);
 gulp.task('karma', tasks.karma);
-gulp.task('json-server', tasks.jsonServer);
 gulp.task('lint:test', tasks.eslint);
 gulp.task('lint:build', tasks.eslint);
 gulp.task('lint', gulp.parallel('lint:test', 'lint:build'));
@@ -23,8 +22,6 @@ gulp.task('selenium:tunnel', tasks.selenium);
 gulp.task('webpack:global', tasks.webpack);
 gulp.task('webpack:main', tasks.webpack);
 gulp.task('webpack', gulp.parallel('webpack:global', 'webpack:main'));
-
-gulp.task('serve', gulp.parallel('json-server', 'browser-sync'));
 
 gulp.task('build', (cb) => {
   let task;
@@ -36,7 +33,7 @@ gulp.task('build', (cb) => {
       'lint',
       'webpack',
       'assemble',
-      'serve'
+      'browser-sync'
     );
   } else {
     task = gulp.series(

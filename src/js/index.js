@@ -1,19 +1,14 @@
-import flux from './modules/bootstrap';
-import Products from './components/Products';
-import Cart from './components/Cart';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {Provider} from 'react-redux';
+import bootstrap from './modules/bootstrap';
+import App from './components/App';
 
-const {store, actions} = flux();
-const productsComponent = new Products(store, actions); // eslint-disable-line
-const cartComponent = new Cart(store, actions);
-const app = document.querySelector('[data-app]');
+const {store, actions} = bootstrap();
 
-Promise.all([
-  actions.cartActions.init(),
-  actions.productActions.init()
-]).then(() => {
-  const productElm = productsComponent.render();
-  const cartElm = cartComponent.render();
-
-  app.appendChild(productElm);
-  app.appendChild(cartElm);
-});
+ReactDOM.render(
+  <Provider store={store}>
+    <App actions={actions} />
+  </Provider>,
+  document.querySelector('[data-app]')
+);

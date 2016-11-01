@@ -8,8 +8,8 @@ import {
 } from 'redux';
 import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
-import {store as cart, actions as cartActions} from './cart';
-import {store as products, actions as productActions} from './products';
+import {store as posts, actions as postActions} from './posts';
+import {store as favorites, actions as favoriteActions} from './favorites';
 
 export default function() {
   const {NODE_ENV} = process.env;
@@ -25,13 +25,13 @@ export default function() {
     // middleware.push(global.devToolsExtension());
   // }
 
-  const reducer = combineReducers({cart, products});
+  const reducer = combineReducers({posts, favorites});
   const middlewareWrapper = applyMiddleware(...middleware);
   const composed = compose(middlewareWrapper);
   const store = createStore(reducer, composed);
   const actions = {
-    cartActions: bindActionCreators(cartActions, store.dispatch),
-    productActions: bindActionCreators(productActions, store.dispatch)
+    postActions: bindActionCreators(postActions, store.dispatch),
+    favoriteActions: bindActionCreators(favoriteActions, store.dispatch)
   };
 
   return {
