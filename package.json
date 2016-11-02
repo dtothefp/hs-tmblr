@@ -35,6 +35,7 @@
     "boiler-core": "^5.0.0",
     "boiler-preset-plus": "^5.0.0",
     "chai": "3.5.0",
+    "chai-as-promised": "6.0.0",
     "chai-dom": "1.4.2",
     "deploy": "file:./deploy",
     "gulp": "github:gulpjs/gulp#4.0",

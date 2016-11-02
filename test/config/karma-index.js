@@ -2,7 +2,9 @@ import 'babel-polyfill';
 import 'dom4';
 import chai from 'chai';
 import dom from 'chai-dom';
+import chaiAsPromised from 'chai-as-promised';
 
+chai.use(chaiAsPromised);
 chai.use(dom);
 
 /**

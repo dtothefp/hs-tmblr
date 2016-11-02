@@ -9,9 +9,11 @@ export function init(opts = {}) {
 
     return request(opts)
       .then(data => {
+        const {response} = data;
+
         dispatch({
           type: SUCCESS,
-          value: data
+          data: response.posts || response // for `tag` there are no `.posts`
         });
 
         return data;

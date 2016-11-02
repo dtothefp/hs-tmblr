@@ -1,4 +1,4 @@
-import qs from 'query-string';
+import {stringify} from 'query-string';
 import jsonp from 'jsonp';
 import isUndefined from 'lodash/isUndefined';
 
@@ -10,7 +10,7 @@ export default function({tag, blog}) {
   const options = {
     timeout: 3000
   };
-  const query = qs({
+  const query = stringify({
     api_key: 'u1pd7v2RaAFZzFGzH4CkSmaTfhAAKzel5jE7UD6b3vcDCnMs2f',
     limit: 12,
     tag
