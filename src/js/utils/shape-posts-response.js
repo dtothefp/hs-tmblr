@@ -1,6 +1,7 @@
 import pick from 'lodash/pick';
 
 const whitelist = [
+  'id',
   'blog_name',
   'summary',
   'photos',

@@ -49,7 +49,7 @@ export default class App extends Component {
         htmlFor={props.name}
         key={`search_input_${i}`}
       >
-        {header}
+        {header}:
         <input
           id={props.name}
           value={this.state[props.name] || ''}
@@ -63,8 +63,10 @@ export default class App extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        {this.renderInputs()}
+      <form className="search" onSubmit={this.handleSubmit}>
+        <div className="search__fields">
+          {this.renderInputs()}
+        </div>
         <button type="submit">Search</button>
       </form>
     );

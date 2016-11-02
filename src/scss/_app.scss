@@ -14,12 +14,38 @@ img {
   filter: grayscale(100%);
 }
 
+input {
+  display: block;
+}
+
 button {
   @include button-variant;
 }
 
+a {color: $black;}
+a:visited {color: $black;}
+a:hover {color: $dark-gray;}
+a:active {color: $black;}
+a {text-decoration: none;}
+
 .app {
   display: flex;
-  position: relative;
-  background-color: $dark-bg;
+  flex-direction: column;
+  margin: 20px;
+  min-height: 100vh;
+
+  @media (min-width: map-get($breakpoints, medium)) {
+    flex-direction: row;
+    &__column-first {
+      border-right: 1px solid $light-gray;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__column-last {
+      border-left: 1px solid $light-gray;
+      width: 400px;
+    }
+  }
 }

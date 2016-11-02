@@ -5,14 +5,16 @@ import Posts from './Posts';
 import Favorites from './Favorites';
 import Spinner from './Spinner';
 
-@connect(({favorites, posts}) => ({
+@connect(({favorites = [], posts}) => ({
+  added: favorites.map(({id}) => id),
   favorites,
   posts
 }))
 export default class App extends Component {
   static propTypes = {
     actions: PropTypes.object.isRequired,
-    favorites: PropTypes.object.isRequired,
+    added: PropTypes.array.isRequired,
+    favorites: PropTypes.array.isRequired,
     posts: PropTypes.object.isRequired
   };
 
@@ -26,32 +28,18 @@ export default class App extends Component {
     };
   }
 
-  handleClick = (id, opts = {}) => {
-    return e => {
-      const {method = 'add', name} = opts;
-      const {actions} = this.props;
-
-      actions.favoriteActions.update(id, {
-        name,
-        method
-      });
-    };
-  }
-
   render() {
-    const {favorites, posts} = this.props;
+    const {added, favorites, posts} = this.props;
 
     return (
       <div className="app">
-        <Form />
-        <Posts
-          state={{posts, favorites}}
-          handleClick={this.handleClick}
-        />
-        <Favorites
-          state={favorites}
-          handleClick={this.handleClick}
-        />
+        <div className="app__column-first">
+          <Form />
+          <Posts state={{posts, added}} />
+        </div>
+        <div className="app__column-last">
+          <Favorites state={favorites} />
+        </div>
         <Spinner />
       </div>
     );

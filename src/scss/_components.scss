@@ -1,221 +1,65 @@
-.products {
-  flex-grow: 1;
+.search {
+  padding: 20px 0;
+  border-bottom: 1px solid $light-gray;
 
-  &__header {
-    @include header;
+  &__fields {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    max-width: 360px;
+    margin-bottom: 20px;
+  }
+}
 
-    .svg {
-      width: 30px;
-      color: $white;
-      cursor: pointer;
+.posts,
+.favorites {
+  p {
+    margin: 0 0 20px;
+    font-size: 0.9em;
+  }
+
+  &__post {
+    margin: 20px 0 20px 0;
+    padding: 10px;
+    border-radius: 3px;
+    border: 1px solid $light-gray;
+
+    &-images {
+      flex-wrap: wrap;
+      display: flex;
+      margin-bottom: 20px;
+
+      &-img {
+        margin-right: 10px;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
     }
-  }
-
-  &__product {
-    @include clearfix;
-    margin: 20px;
-  }
-
-  &__product-cta,
-  &__product-img {
-    float: left;
-  }
-
-  &__product-content {
-    float: right;
-  }
-
-  &__product-img {
-    width: 28%;
-  }
-
-  &__product-content {
-    width: 68%;
-  }
-
-  &__product-cta {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    margin: 20px 0;
-
-    p {
-      font-size: 24px;
-      font-weight: 600;
-      padding-left: 4%;
-    }
-
-    button {
-      width: 28%;
-    }
-  }
-
-  h4 {
-    margin: 10px 0;
   }
 
   @media (min-width: map-get($breakpoints, medium)) {
-    &__product-cta {
-      float: right;
-      width: 68%;
-
-      button {
-        width: auto;
-        order: 2;
-      }
-
-      p {
-        width: 32%;
-        padding-left: 0;
-        order: 1;
-      }
+    &__post {
+      margin: 20px 20px 20px 0;
+      border-radius: 3px;
+      border: 1px solid $light-gray;
     }
   }
 }
-.cart {
-  background: $white;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  transform: translateX(100%);
-  transition: 0.2s linear transform;
+
+.posts {
+  padding-bottom: 20px 0;
+  border-bottom: 1px solid $light-gray;
+  border-top: 1px solid $light-gray;
 
   @media (min-width: map-get($breakpoints, medium)) {
-    max-width: 40%;
+    border-bottom: none;
   }
+}
 
-  &.is-open {
-    transform: translateX(0);
-  }
+.favorites {
+  border-top: 1px solid $light-gray;
 
-  &__header-main,
-  &__header-shipping,
-  &__header-total {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-
-    p:first-of-type {
-      font-weight: 600;
-    }
-  }
-
-  &__header-shipping,
-  &__header-total {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-
-    p:first-of-type {
-      margin: 0 0 0 20px;
-    }
-
-    p:last-child {
-      margin: 0 20px 0 0;
-    }
-  }
-
-  &__header-main {
-    @include header;
-  }
-
-  &__header-count {
-    display: flex;
-    align-items: center;
-
-    .svg {
-      cursor: pointer;
-      width: 20px;
-      margin-right: 10px;
-    }
-  }
-
-  &__header-shipping,
-  &__header-total {
-    padding: 10px 0;
-  }
-
-  &__items,
-  &__feature {
-    margin: 20px;
-  }
-
-  &__items {
-    border-top: 2px solid $light-gray;
-    border-bottom: 2px solid $light-gray;
-  }
-
-  &__items-empty {
-    text-align: center;
-    padding: 50px 0;
-  }
-
-  &__items-item,
-  &__items-interact,
-  &__items-wrapper {
-    display: flex;
-  }
-
-  &__items-meta {
-    margin-left: 10px;
-
-    h6 {
-      font-size: 18px;
-      margin: 10px 0;
-    }
-  }
-
-  &__items-interact {
-    div {
-      margin: 0 5px;
-    }
-  }
-
-  &__items-item {
-    justify-content: space-between;
-    margin: 20px 0;
-  }
-
-  &__items-wrapper {
-    img {
-      width: 150px;
-      height: 150px;
-    }
-  }
-
-  &__feature-content {
-    width: 70%;
-    margin: 20px auto;
-
-    img {
-      width: 100%;
-    }
-
-    button {
-      display: block;
-      margin: 20px auto;
-    }
-  }
-
-  &__items-button {
-    @include button-round;
-    width: 20px;
-    height: 20px;
-
-    &.increment:before {
-      content: "+";
-    }
-
-    &.remove:before {
-      content: "x";
-    }
-
-    &.decrement:before {
-      content: "-";
-    }
+  @media (min-width: map-get($breakpoints, medium)) {
+    margin-left: 20px;
+    border-top: none;
   }
 }
