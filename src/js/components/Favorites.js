@@ -27,7 +27,7 @@ export default class Favorites extends Component {
         <h3>Favorites:</h3>
         {favorites.map(({id, ...post}, i) => (
           <Post classPrefix={classPrefix} post={post} key={`fav_${i}`}>
-            <button onClick={this.handleRemove(id)}>Remove</button>
+            <button type="button" onClick={this.handleRemove(id)}>Remove</button>
           </Post>
         ))}
       </div>

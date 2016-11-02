@@ -32,6 +32,7 @@ export default class Posts extends Component {
       return (
         <Post classPrefix={classPrefix} post={post} key={`post_${i}`}>
           <button
+            type="button"
             onClick={this.handleAdd(id)}
             disabled={isAdded}
           >{buttonText}</button>

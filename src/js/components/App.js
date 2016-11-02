@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import Form from './Form';
 import Posts from './Posts';
 import Favorites from './Favorites';
-import Spinner from './Spinner';
 
 @connect(({favorites = [], posts}) => ({
   added: favorites.map(({id}) => id),
@@ -40,7 +39,6 @@ export default class App extends Component {
         <div className="app__column-last">
           <Favorites state={favorites} />
         </div>
-        <Spinner />
       </div>
     );
   }
