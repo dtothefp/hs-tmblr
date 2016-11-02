@@ -7,7 +7,6 @@
     "start": "gulp build",
     "serve": "gulp serve",
     "watch": "gulp watch",
-    "deploy": "deploy; test $? -eq 0 -o $? -eq 1 -o $? -eq 2",
     "fix": "eslint --fix ./test/integration/**",
     "test": "gulp karma",
     "test:watch": "gulp test:integration"
@@ -37,8 +36,6 @@
     "chai": "3.5.0",
     "chai-as-promised": "6.0.0",
     "chai-dom": "1.4.2",
-    "deploy": "file:./deploy",
-    "enzyme": "2.5.1",
     "gulp": "github:gulpjs/gulp#4.0",
     "react-addons-test-utils": "15.3.2",
     "webpack": "2.1.0-beta.25"
