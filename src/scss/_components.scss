@@ -29,9 +29,20 @@
       margin-bottom: 20px;
 
       &-img {
-        margin-right: 10px;
-        background-repeat: no-repeat;
-        background-size: cover;
+        margin: 0 10px 10px 0;
+        width: 100%;
+
+        &.is-last {
+          margin-bottom: 0;
+        }
+
+        &.is-first {
+          margin-top: 0;
+        }
+
+        &.is-first.is-last {
+          margin-right: 0;
+        }
       }
     }
   }

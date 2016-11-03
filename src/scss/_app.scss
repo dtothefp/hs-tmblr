@@ -6,17 +6,9 @@ html { box-sizing: border-box; }
   &::after { box-sizing: inherit; }
 }
 
-body {
-  font-family: $font-family-sans;
-}
+body {font-family: $font-family-sans;}
 
-img {
-  filter: grayscale(100%);
-}
-
-input {
-  display: block;
-}
+input {display: block;}
 
 button {
   @include button-variant;
@@ -27,6 +19,9 @@ a:visited {color: $black;}
 a:hover {color: $dark-gray;}
 a:active {color: $black;}
 a {text-decoration: none;}
+
+ul {padding: 0;}
+li {list-style-type: none;}
 
 .app {
   display: flex;
@@ -39,13 +34,11 @@ a {text-decoration: none;}
     &__column-first {
       border-right: 1px solid $light-gray;
       flex-grow: 1;
-      display: flex;
-      flex-direction: column;
+      max-width: 60%;
     }
 
     &__column-last {
       border-left: 1px solid $light-gray;
-      width: 400px;
     }
   }
 }

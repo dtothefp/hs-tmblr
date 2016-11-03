@@ -1,15 +1,35 @@
 import React, {Children, PropTypes} from 'react';
+import cx from 'classnames';
+import rit from '../utils/render-if-truthy';
 
-const getStyle = imgs => {
-  const [img] = imgs.slice(-1);
-  const {url, height, width} = img;
+const renderPhotos = (photos, classPrefix) => {
+  if (!photos.length) return null;
 
-  return {
-    backgroundImage: `url('${url}')`,
-    height: `${height}px`,
-    width: `${width}px`
-  };
+  const lastIdx = photos.length - 1;
+
+  // TODO: add masonry or something fancy here
+  return (
+    <div className={`${classPrefix}__post-images`}>
+      {photos.map((img, i) => {
+        const {original_size: {url}} = img;
+        const classes = cx(`${classPrefix}__post-images-img`, {
+          'is-last': i === lastIdx,
+          'is-first': i === 0
+        });
+
+        return (
+          <img
+            src={url}
+            role="presentation"
+            className={classes}
+            key={`${url}_${i}`}
+          />
+        );
+      })}
+    </div>
+  );
 };
+
 const Post = props => {
   const {classPrefix, post, children, ...rest} = props;
   const {
@@ -17,24 +37,14 @@ const Post = props => {
     summary,
     photos = []
   } = post;
-  const renderPhotos = () => (
-    <div className={`${classPrefix}__post-images`}>
-      {photos.map(({alt_sizes: img}, i) => (
-        <div
-          className={`${classPrefix}__post-images-img`}
-          style={getStyle(img)}
-          key={`img_${i}`}
-        />
-      ))}
-    </div>
-  );
-
   return (
     <div className={`${classPrefix}__post`} {...rest}>
-      <a href={href} target="_blank" rel="noopener noreferrer">
-        <p className={`${classPrefix}__post-summary`}>{summary}</p>
-      </a>
-      {photos.length ? renderPhotos() : null}
+      {rit(summary, () => (
+        <a href={href} target="_blank" rel="noopener noreferrer">
+          <p className={`${classPrefix}__post-summary`}>{summary}</p>
+        </a>
+      ))}
+      {renderPhotos(photos, classPrefix)}
       {Children.only(children)}
     </div>
   );

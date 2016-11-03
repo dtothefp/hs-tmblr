@@ -8,6 +8,11 @@ const whitelist = [
   'post_url'
 ];
 
+/**
+ * Plug off desired keys from the posts response
+ * @param {Array} posts
+ * @return {Array}
+ */
 export default function(posts = []) {
   return posts.map((post) => pick(post, whitelist));
 }
