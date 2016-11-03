@@ -3,6 +3,7 @@ import shapePosts from '../../utils/shape-posts-response';
 
 const {
   LOADING,
+  FAILURE,
   SUCCESS
 } = POSTS;
 
@@ -13,12 +14,23 @@ export default function(state = {}, action) {
 
   switch (action.type) {
     case LOADING:
-      newState = assign({loading: true});
+      newState = assign({
+        loading: true,
+        failed: false
+      });
       break;
     case SUCCESS:
       newState = assign({
         loading: false,
+        failed: false,
         list: shapePosts(data)
+      });
+      break;
+    case FAILURE:
+      newState = assign({
+        loading: false,
+        failed: true,
+        list: []
       });
       break;
   }

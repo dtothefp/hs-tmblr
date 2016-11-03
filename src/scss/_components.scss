@@ -15,6 +15,13 @@
   p {
     margin: 0 0 20px;
     font-size: 0.9em;
+
+    &.is-failure {
+      font-size: 1.2em;
+      text-align: center;
+      margin-top: 20px;
+      color: $orange;
+    }
   }
 
   &__post {

@@ -1,5 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import Post from './Post';
+import rit from '../utils/render-if-truthy';
 
 export default class Posts extends Component {
   static propTypes = {
@@ -42,9 +43,13 @@ export default class Posts extends Component {
   }
 
   render() {
+    const {posts} = this.props.state;
+    const {failed} = posts;
+
     return (
       <div className="posts">
-        {this.renderPosts()}
+        {rit(failed, () => <p className="is-failure">Failed to load posts</p>)}
+        {rit(!failed, () => this.renderPosts())}
       </div>
     );
   }

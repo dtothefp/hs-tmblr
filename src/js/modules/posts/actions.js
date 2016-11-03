@@ -8,15 +8,16 @@ export function init(opts = {}) {
     dispatch({type: LOADING});
 
     return request(opts)
-      .then(data => {
-        const {response} = data;
+      .then(json => {
+        const {response} = json;
+        const data = response.posts || response; // for `tag` there are no `.posts`
 
         dispatch({
-          type: SUCCESS,
-          data: response.posts || response // for `tag` there are no `.posts`
+          type: data.length ? SUCCESS : FAILURE,
+          data
         });
 
-        return data;
+        return json;
       }).catch(err => {
         dispatch({type: FAILURE});
       });
